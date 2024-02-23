@@ -1,0 +1,60 @@
+use Oficina;
+
+show tables;
+
+desc Cliente;
+	insert into Cliente(Nome, CPF,CEP, Data_nascimento, Email, Telefone)
+	values('Pedro Henrique Soares', '123.456.789-00', '01234-567', '1985-03-15','Henrique.Soares@gmail.com', '(21)98765-4321'),
+    ('Leticia da Silva Rodrigues', '234.567.890-11', '04567-890', '1978-09-05','Lecitia.Rodrigues@gmail.com', '(11)87654-3210'),
+    ('Rafael Mendes Pereira', '345.678.901-22', '02345-678', '1989-12-18','Rafael.Mendes@gmail.com', '(31)76543-2109'),
+    ('Fernanda Costa Lima', '456.789.012-33', '05678-901', '2005-02-11','Fernanda.costa@gmail.com', '(41)65432-1098'),
+    ('Juliano Gomes Cardoso', '567.890.123-44','07890-123', '2000-10-26','Juliano.cardoso@gmail.com', '(61)4310-9876');
+    
+    
+desc cliente_veiculo;
+    insert into cliente_veiculo(Tipo_Veiculo, Placa, Cor_dominante, Ano_fabricação, Especie_tipo, idCliente)
+    values('Carro', 'ACB-1234', 'preto', '2018-01-01', 'automovel', '1'),
+    ('Moto','CBA-2341', 'azul', '2022-01-01', 'Motocicleta', '2'),
+	('Caminhonete', 'BAC-3412', 'cinza', '2007-01-01', 'microonibus', '3'),
+    ('Carro', 'ACB-4123', 'Verde', '2023-01-01', 'Camioneta', '4'),
+    ('Moto', 'BCA-2413', 'vermelho', '2021-01-01', 'Motoneta','5');
+    
+    
+    desc mecanicos;
+    insert into mecanicos(Codigo, Nome, Endereço, especialidade)
+    values('123456789', 'Rubens Santos', 'Rua dos Passaros RJ', 'Conserto'),
+    ('234567891', 'Moises Torres', 'Rua das Arvores RJ', 'Troca de peças'),
+    ('345678912','Adolfo Silva', 'Rua dos Coqueiros RJ', 'Revisão'),
+    ('456789123', 'Oscar Hoover', 'Rua das Margaridas RJ', 'Conserto'),
+    ('567891234', 'Tito Martin', 'Rua das Margaridas RJ', 'Troca de peças'),
+    ('678912345', 'Alfredo Hoover', 'Rua das Rosas RJ', 'Revisão');
+    
+    
+desc os;
+    insert into os(Numero, Data_emissão, Valor, status_processo, data_conclusão)
+    values('123456', '2023-01-13', '560', 'Pronto', '2023-01-20'),
+    ('234561', '2022-11-02', '280', 'Consertado', '2022-11-12'),
+    ('345612', '2023-06-25', '440', 'Revisando', '2023-07-01'),
+    ('456123', '2024-01-03', '610', 'Pronto', '2024-01-07'),
+    ('561234', '2024-02-10', '400', 'Revisando', '2024-02-20');
+    
+    
+    desc oficina;
+    insert into oficina(telefone, Endereço, CNPJ,status_ofic)
+    values('(11)3214-56789', 'Rua das Pedras RJ', '98765-4321', 'Aberto'); 
+    
+    desc serviços;
+    insert into serviços(idOS, idOficina, Quantidade_pecas, tipos_serviço)
+    values('1','1', '24', 'Troca de peças'),
+    ('2','1','40', 'Reparar peças'),
+    ('3','1','10','Troca do olho'),
+    ('4','1','21', 'Troca de peças'),
+    ('5','1','30','Reparar peças');
+    
+    
+    desc equipe_mecanicos;
+    insert into equipe_mecanicos(idQeMecanicos, idQeOficina, numero_trabalhadores, quantidade_veiculos, especialidade_equipe)
+    values('1', '1', '2', '2', 'Carros'),
+    ('2', '1', '1', '2', 'Motos'),
+    ('3', '1', '2', '1', 'Caminhoes');
+    
