@@ -1,0 +1,34 @@
+use Oficina;
+
+-- NUMERO DE CLIENTES
+select count(*) from cliente;
+
+
+-- NUMERO DE VEICULOS
+select count(*) from cliente_veiculo;
+
+-- NOME DOS MECANICOS
+select Codigo, Nome, Endereço, especialidade from Mecanicos
+order by Codigo;
+
+
+-- CLIENTES ORDENADOS PELO NOME
+select Nome, CPF,CEP, Data_nascimento, Email, Telefone from cliente
+order by Nome;
+
+-- CLIENTES ORDENADOS PELA DATA DE NASCIMENTO
+select Nome, CPF,CEP, Data_nascimento, Email, Telefone from cliente
+order by Data_nascimento;
+
+select count(*) from Serviços;
+
+
+-- numero de serviços com acima de 22 peças
+select count(*) from Serviços where Quantidade_pecas > 22;   
+        
+        
+-- NOME DOS SERVIÇOS COM MAIS DE 22 PEÇAS
+select tipos_serviço, Quantidade_pecas from serviços having  Quantidade_pecas > 22 order by Quantidade_pecas;
+
+-- NOME DOS SERVIÇOS COM MENOS DE 22 PEÇAS
+select tipos_serviço, Quantidade_pecas from serviços having  Quantidade_pecas < 22 order by Quantidade_pecas;
