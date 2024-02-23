@@ -1,0 +1,78 @@
+create database Oficina;
+use Oficina;
+
+create table Cliente(
+idCliente int auto_increment primary key,
+Nome varchar(50),
+CPF char(16) not Null,
+CEP char(10) not null,
+Data_nascimento date,
+Email varchar(45),
+Telefone varchar(16),
+constraint unique_cpf_client unique (CPF),
+constraint unique_cep_client unique (CEP)
+);
+desc Cliente;
+
+
+create table Cliente_Veiculo(
+idCliente_Veiculo int auto_increment primary key,
+Tipo_veiculo ENUM("Carro", "Moto", "Caminhonete"),
+Placa varchar(45),
+Cor_dominante varchar(45),
+Ano_fabricação date,
+Especie_tipo varchar(45),
+idCliente int
+);
+desc Cliente_Veiculo;
+
+
+create table OS(
+idOS int auto_increment primary key,
+Numero int not null,
+Data_emissão date not null,
+Valor int not null,
+status_processo ENUM("Consertado", "Revisando", "Pronto"),
+data_conclusão date
+);
+desc OS;
+
+
+create table Mecanicos(
+idMecanicos int auto_increment primary key,
+Codigo int,
+Nome VARCHAR(45),
+Endereço varchar(45),
+Especialidade ENUM("Conserto", "Troca de peças", "Revisão")
+);
+desc Mecanicos;
+
+create table Serviços(
+idOS int,
+idOficina int,
+Quantidade_pecas int,
+tipos_serviço ENUM("Troca de peças", "Reparar peças", "Troca do olho")
+);
+desc Serviços;
+
+
+create table Oficina(
+idOficina int auto_increment primary key,
+telefone varchar(45),
+Endereço varchar(45),
+CNPJ varchar(45),
+status_ofic ENUM("Aberto", "Fechado")
+);
+desc Oficina;
+
+
+create table Equipe_mecanicos(
+idQeMecanicos int,
+idQeOficina int,
+numero_trabalhadores int,
+quantidade_veiculos int,
+especialidade_equipe ENUM("Carros", "Motos", "Caminhoes"),
+constraint fk_equipe_trabalhadores foreign key(idQeMecanicos) references Mecanicos(idMecanicos),
+constraint fk_equipe_oficina foreign key(idQeOficina) references Oficina(idOficina)
+);
+desc Equipe_mecanicos;
